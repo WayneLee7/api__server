@@ -31,6 +31,10 @@ app.use('/api', userRouter)
 const userInfoRouter = require('./router/userinfo')
 app.use('/my', userInfoRouter)
 
+// 文章分类
+const artCateRouter = require('./router/artcate')
+app.use('/my/article', artCateRouter)
+
 app.use((err, req, res, next) => {
     if (err instanceof joi.ValidationError) {
         return res.cc(err)
