@@ -1,6 +1,6 @@
-const { result } = require('@hapi/joi/lib/base')
 const db = require('../db/index')
 const bcrypt = require('bcryptjs')
+// 获取用户信息
 exports.getUserInfo = (req, res) => {
     const sql = `select id,username,nickname,email,user_pic from ev_users where id=?`
     db.query(sql, req.user.id, (err, results) => {
@@ -14,7 +14,7 @@ exports.getUserInfo = (req, res) => {
         })
     })
 }
-
+// 修改用户信息
 exports.updateUserInfo = (req, res) => {
     const sql = `update ev_users set ? where id= ?`
     db.query(sql, [req.body, req.body.id], (err, results) => {
@@ -23,7 +23,7 @@ exports.updateUserInfo = (req, res) => {
         return res.cc('修改用户基本信息成功')
     })
 }
-
+// 更新密码
 exports.updatePassword = (req, res) => {
     const sql = `select * from ev_users where id=?`
     db.query(sql, req.user.id, (err, results) => {
