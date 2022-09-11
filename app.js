@@ -34,6 +34,12 @@ app.use('/my', userInfoRouter)
 // 文章分类
 const artCateRouter = require('./router/artcate')
 app.use('/my/article', artCateRouter)
+// 使用文章
+const articleRouter = require('./router/article')
+app.use('/my/article', articleRouter)
+
+// 托管静态资源文件
+app.use('/uploads', express.static('./uploads'))
 
 app.use((err, req, res, next) => {
     if (err instanceof joi.ValidationError) {
