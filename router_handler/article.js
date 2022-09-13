@@ -9,7 +9,7 @@ exports.addArticle = (req, res) => {
     if (!req.file || req.file.fieldname !== 'cover_img') return res.cc('文章封面是必选参数！')
     // res.send('ok')
     const articleInfo = {
-        // 标题、内容、状态、所属的分类Id 1111111
+        // 标题、内容、状态、所属的分类Id 22222
         ...req.body,
         // 文章封面在服务器端的存放路径
         cover_img: path.join('/uploads', req.file.filename),
